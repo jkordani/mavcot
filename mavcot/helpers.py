@@ -1,11 +1,9 @@
-import geoid
-
-geoid_height_table = geoid.GeoidHeight()
+import pyproj
 
 def get_geoid_height(lat, lon):
-	geoid_height = 0
-	try:
-		geoid_height = geoid_height_table.get(lat, lon)
-	except Exception as e:
-		print(e)
-	return geoid_height
+    # Define the geoid model (EGM96 is commonly used with WGS84)
+    geoid = pyproj.Geoid("egm96")
+
+    # Get geoid height above the ellipsoid at the given location
+    height = geoid.height(lat, lon)
+    return height

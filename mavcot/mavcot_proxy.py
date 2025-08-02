@@ -4,9 +4,13 @@ from pymavlink import mavutil
 from datetime import datetime
 from mavcot.helpers import get_geoid_height
 import xml.etree.ElementTree as ET
-import os, sys, time, socket, math, ConfigParser, pkg_resources
+import os, sys, time, socket, math, configparser as ConfigParser
+import importlib
 
-config_path = pkg_resources.resource_filename('mavcot', 'mavcot.conf')
+config_path = None
+
+with importlib.resources.path('mavcot', 'mavcot.conf') as p:
+    config_path = str(p)
 
 # allow user to specify a custom config path
 if len(sys.argv) > 1:
