@@ -1,0 +1,6 @@
+certifi==2025.7.14
+configparser==7.2.0
+fastcrc==0.3.2
+lxml==6.0.0
+pymavlink==2.4.48
+pyproj==3.7.1
